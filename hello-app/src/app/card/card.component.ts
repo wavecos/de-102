@@ -16,5 +16,15 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  convertirAMayusculas() {
+    console.log('hiciste un click');
+    this.name = this.name.toUpperCase();
+    this.height = 100;
+  }
+
+  borrarNombre() {
+    this.name = 'a borrar';
+  }
  
 }
