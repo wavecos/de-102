@@ -1,3 +1,5 @@
+import { Mascota } from './Mascota';
+
 class Cliente {
     nombre: string;
     apellido: string;

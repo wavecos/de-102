@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MascotaListComponent } from './mascota/mascota-list/mascota-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MascotaListComponent
   ],
   imports: [
     NgbModule,
