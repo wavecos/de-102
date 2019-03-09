@@ -36,4 +36,16 @@ export class AppComponent {
   ];
 
 
+  seHizoMayuscula() {
+    var test = {
+      nombre: "HELLO",
+      altura: 1.0,
+      peso: 100,
+      esMujer: false 
+    };
+
+    this.empleados.push(test);
+  }
+
+
 }

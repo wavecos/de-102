@@ -17,28 +17,28 @@ export class MascotaListComponent implements OnInit {
 
   ngOnInit() {
     this.mascotas = this.mascotaService.getMascotas()
-    console.log('ngOnInit');
+    // console.log('ngOnInit');
   }
 
-  ngOnChanges() {
-    console.log('ngOnChanges');
-  }
-  ngDoCheck() {
-    console.log('ngDoCheck');
-  }
-  ngAfterContentInit() {
-    console.log('ngAfterContentInit');
-  }
-  ngAfterContentChecked() {
-    console.log('ngAfterContentChecked')
-  }
-  ngAfterViewInit() {
-    console.log('ngAfterViewInit');
-  }
-  ngAfterViewChecked() {
-    console.log('ngAfterViewChecked');
-  }
-  ngOnDestroy() {
-    console.log('ngOnDestory');
-  }
+  // ngOnChanges() {
+  //   console.log('ngOnChanges');
+  // }
+  // ngDoCheck() {
+  //   console.log('ngDoCheck');
+  // }
+  // ngAfterContentInit() {
+  //   console.log('ngAfterContentInit');
+  // }
+  // ngAfterContentChecked() {
+  //   console.log('ngAfterContentChecked')
+  // }
+  // ngAfterViewInit() {
+  //   console.log('ngAfterViewInit');
+  // }
+  // ngAfterViewChecked() {
+  //   console.log('ngAfterViewChecked');
+  // }
+  // ngOnDestroy() {
+  //   console.log('ngOnDestory');
+  // }
 }

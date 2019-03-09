@@ -1,0 +1,20 @@
+<form>
+  <div class="form-group">
+    <label for="inputNombre">Nombre</label>
+    <input type="text" [(ngModel)]="mascota.nombre" [ngModelOptions]="{standalone: true}" class="form-control" id="inputNombre" placeholder="Introduzca nombre de la mascota">
+  </div>
+  <div class="form-group">
+    <label for="inputRaza">Raza</label>
+    <input type="text" [(ngModel)]="mascota.raza" [ngModelOptions]="{standalone: true}" class="form-control" id="inputRaza" placeholder="Introduzca raza de la mascota">
+  </div>
+  <div class="form-group">
+    <label for="inputEdad">Edad</label>
+    <input type="number" [(ngModel)]="mascota.edad" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEdad" placeholder="Edad de la mascota">
+  </div>
+  <div class="form-group">
+    <label for="inputEspecie">Especie</label>
+    <input type="text" [(ngModel)]="mascota.especie"  [ngModelOptions]="{standalone: true}" class="form-control" id="inputEspecie" placeholder="Cuál es la especie?">
+  </div>
+
+  <button (click)="guardar()" class="btn btn-primary">Guardar</button>
+</form>

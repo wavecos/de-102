@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-card',
@@ -6,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+
+  @Output() mayusculasEvent = new EventEmitter();
 
   @Input() name: string = "S/N";
   @Input() height: number = 0.0;
@@ -21,6 +24,8 @@ export class CardComponent implements OnInit {
     console.log('hiciste un click');
     this.name = this.name.toUpperCase();
     this.height = 100;
+    // Emitiendo el evento
+    this.mayusculasEvent.emit();
   }
 
   borrarNombre() {
