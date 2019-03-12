@@ -11,9 +11,16 @@
     <label for="inputEdad">Edad</label>
     <input type="number" [(ngModel)]="mascota.edad" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEdad" placeholder="Edad de la mascota">
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="inputEspecie">Especie</label>
     <input type="text" [(ngModel)]="mascota.especie"  [ngModelOptions]="{standalone: true}" class="form-control" id="inputEspecie" placeholder="Cuál es la especie?">
+  </div> -->
+
+  <div class="form-group">
+    <label for="inputEspecie">Especie</label>
+    <select class="form-control" id="inputEspecie" [(ngModel)]="mascota.especie" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let item of especies | enumKeyValuelist;" [value]="item.key">{{ item.value }}</option>
+    </select>
   </div>
 
   <button (click)="guardar()" class="btn btn-primary">Guardar</button>

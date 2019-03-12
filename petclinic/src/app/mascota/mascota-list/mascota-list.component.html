@@ -1,3 +1,16 @@
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let mascota of mascotas;">{{ mascota.nombre }}</li>
-</ul>
+
+<div class="row">
+    <div class="card" style="width: 18rem; margin-left: 20px" *ngFor="let mascota of mascotas;">
+        <img src="https://via.placeholder.com/100" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ mascota.nombre }}</h5>
+          <p class="card-text">Edad: {{ mascota.edad }}</p>
+          <p class="card-text">Raza: {{ mascota.raza }}</p>
+          <p class="card-text">Especie: {{ mascota.especie }}</p>
+          <p class="card-text">Estado: {{ mascota.estado }}</p>
+          <p class="card-text">Fecha Ingreso: {{ mascota.fechaIngreso | date: 'dd-MM-yyyy HH:mm' }}</p>
+          <a href="#" class="btn btn-primary">Detalle</a>
+        </div>
+      </div>
+</div>
+

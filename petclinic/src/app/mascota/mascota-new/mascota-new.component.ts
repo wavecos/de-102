@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Mascota } from 'src/app/model/Mascota';
+import { Especie } from 'src/app/model/EspecieEnum';
+import { MascotaService } from 'src/app/services/MascotaService';
 
 @Component({
   selector: 'app-mascota-new',
@@ -7,21 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MascotaNewComponent implements OnInit {
 
-  mascota = {
+  especies = Especie
+
+  mascota: Mascota = {
     nombre: "",
-    raza: "pastor aleman",
+    raza: "",
     edad: 0,
-    especie: ""
+    especie: Especie.PERRO,
+    fechaIngreso: new Date(),
+    estado: "nuevo"
   }
 
-
-  constructor() { }
+  constructor(private mascotaService: MascotaService) { }
 
   ngOnInit() {
   }
 
   guardar() {
     console.log('nombre ' + this.mascota.nombre);
+    this.mascotaService.adicionarMascota(this.mascota);
+    this.mascota = {
+      nombre: "",
+      raza: "",
+      edad: 0,
+      especie: Especie.PERRO,
+      fechaIngreso: new Date(),
+      estado: "nuevo"
+    }
   }
 
 }
