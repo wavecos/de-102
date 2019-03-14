@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Mascota } from 'src/app/model/Mascota';
 import { Especie } from 'src/app/model/EspecieEnum';
 import { MascotaService } from 'src/app/services/MascotaService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mascota-new',
@@ -21,7 +22,7 @@ export class MascotaNewComponent implements OnInit {
     estado: "nuevo"
   }
 
-  constructor(private mascotaService: MascotaService) { }
+  constructor(private mascotaService: MascotaService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -37,6 +38,8 @@ export class MascotaNewComponent implements OnInit {
       fechaIngreso: new Date(),
       estado: "nuevo"
     }
+
+    this.router.navigate(['/mascotas']);
   }
 
 }

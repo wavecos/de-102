@@ -1,4 +1,11 @@
 
+<h2>Mascotas</h2>
+
+<button type="button" class="btn btn-primary" (click)="irNuevaMascota()">Adicionar 1</button>
+<a routerLink="/nueva-mascota" class="btn btn-primary" role="button" aria-pressed="true">Adicionar 2</a>
+
+<hr>
+
 <div class="row">
     <div class="card" style="width: 18rem; margin-left: 20px" *ngFor="let mascota of mascotas;">
         <img src="https://via.placeholder.com/100x50" class="card-img-top" alt="...">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mascota } from '../../model/Mascota';
 import { MascotaService } from '../../services/MascotaService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mascota-list',
@@ -11,13 +12,17 @@ export class MascotaListComponent implements OnInit {
 
   mascotas: Mascota[];
 
-  constructor(private mascotaService: MascotaService) {
+  constructor(private mascotaService: MascotaService, private router: Router) {
 
   }
 
   ngOnInit() {
     this.mascotas = this.mascotaService.getMascotas()
     // console.log('ngOnInit');
+  }
+
+  irNuevaMascota() {
+    this.router.navigate(['/nueva-mascota']);
   }
 
   // ngOnChanges() {
