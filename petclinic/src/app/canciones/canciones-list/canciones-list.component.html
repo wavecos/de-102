@@ -18,12 +18,11 @@
         <p class="card-text">Precio: {{ cancion.precio }} {{ cancion.moneda }}</p>
         <p class="card-text">Género: {{ cancion.genero }}</p>
         <p class="card-text">Fecha: {{ cancion.fecha }}</p>
-        <a href="#" class="btn btn-primary">Reproducir</a>
 
         <audio controls preload="none">
           <source src="{{cancion.vistaPrevia}}" type="audio/mp4" />
           <p>Your browser does not support HTML5 audio.</p>
-          </audio>
+        </audio>
       </div>
     </div>
 </div>
