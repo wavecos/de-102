@@ -1,6 +1,14 @@
 <h2>Canciones</h2>
 
 <div class="row">
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="artista" [ngModelOptions]="{standalone: true}" >
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="buscarCanciones()">Search</button>
+  </form>
+</div>
+
+
+<div class="row">
   <div class="card" style="width: 18rem; margin-left: 20px" *ngFor="let cancion of canciones;">
       <img src="{{cancion.albumImagen}}" class="card-img-top" alt="...">
       <div class="card-body">
@@ -11,6 +19,11 @@
         <p class="card-text">Género: {{ cancion.genero }}</p>
         <p class="card-text">Fecha: {{ cancion.fecha }}</p>
         <a href="#" class="btn btn-primary">Reproducir</a>
+
+        <audio controls preload="none">
+          <source src="{{cancion.vistaPrevia}}" type="audio/mp4" />
+          <p>Your browser does not support HTML5 audio.</p>
+          </audio>
       </div>
     </div>
 </div>

@@ -9,18 +9,21 @@ import { Cancion } from 'src/app/model/Cancion';
 })
 export class CancionesListComponent implements OnInit {
 
+  artista: string = ""
   canciones: Cancion[] = []; 
 
   constructor(private musicServive: MusicService) { }
 
   ngOnInit() {
+    this.buscarCanciones()
+  }
 
-    this.musicServive.obtenerCanciones()
+  buscarCanciones() {
+    this.musicServive.obtenerCanciones(this.artista)
       .subscribe((respuesta) => {
         console.log(respuesta);
         this.canciones = respuesta;
       });
-
   }
 
 }

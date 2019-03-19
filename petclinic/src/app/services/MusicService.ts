@@ -11,8 +11,8 @@ export class MusicService {
 
     constructor(private http: HttpClient) {}
 
-    obtenerCanciones(): Observable<Cancion[]> {
-        return this.http.get("https://itunes.apple.com/search?term=beatles&entity=song&limit=10")
+    obtenerCanciones(artista: string): Observable<Cancion[]> {
+        return this.http.get("https://itunes.apple.com/search?term=" + artista + "&entity=song&limit=10")
                 .pipe(map(jsonData => {
                     var cancionesJson = jsonData['results'];
                     var canciones: Cancion[] = [];
