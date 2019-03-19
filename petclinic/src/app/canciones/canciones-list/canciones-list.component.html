@@ -1,3 +1,16 @@
-<p>
-  canciones-list works!
-</p>
+<h2>Canciones</h2>
+
+<div class="row">
+  <div class="card" style="width: 18rem; margin-left: 20px" *ngFor="let cancion of canciones;">
+      <img src="{{cancion.albumImagen}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ cancion.cancion }}</h5>
+        <p class="card-text">Album: {{ cancion.album }}</p>
+        <p class="card-text">Artista: {{ cancion.artista }}</p>
+        <p class="card-text">Precio: {{ cancion.precio }} {{ cancion.moneda }}</p>
+        <p class="card-text">Género: {{ cancion.genero }}</p>
+        <p class="card-text">Fecha: {{ cancion.fecha }}</p>
+        <a href="#" class="btn btn-primary">Reproducir</a>
+      </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicService } from 'src/app/services/MusicService';
+import { Cancion } from 'src/app/model/Cancion';
 
 @Component({
   selector: 'app-canciones-list',
@@ -8,13 +9,16 @@ import { MusicService } from 'src/app/services/MusicService';
 })
 export class CancionesListComponent implements OnInit {
 
+  canciones: Cancion[] = []; 
+
   constructor(private musicServive: MusicService) { }
 
   ngOnInit() {
 
     this.musicServive.obtenerCanciones()
-      .subscribe((resp) => {
-        console.log(resp);
+      .subscribe((respuesta) => {
+        console.log(respuesta);
+        this.canciones = respuesta;
       });
 
   }
