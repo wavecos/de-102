@@ -1,0 +1,30 @@
+{
+  "name": "petclinic-api",
+  "version": "1.0.0",
+  "description": "API para Petclinic",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pepito": "echo hola pepito"
+  },
+  "keywords": [
+    "api",
+    "backend",
+    "petclinic"
+  ],
+  "author": "COGNOS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/node": "^11.11.4",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.4000"
+  }
+}
