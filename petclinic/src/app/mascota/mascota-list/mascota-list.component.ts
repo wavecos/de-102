@@ -17,7 +17,11 @@ export class MascotaListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mascotas = this.mascotaService.getMascotas()
+    this.mascotaService.getMascotas()
+      .subscribe((mascotas) => {
+        console.log(mascotas);
+        this.mascotas = mascotas;
+      });
     // console.log('ngOnInit');
   }
 
