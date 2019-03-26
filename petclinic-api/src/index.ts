@@ -1,4 +1,5 @@
 import express from "express";
+import * as bodyParser from "body-parser";
 import { Especie } from "./model/EspecieEnum";
 import { Mascota } from "./model/Mascota";
 
@@ -21,6 +22,9 @@ app.use((req, res, next) => {
     next();
 });
 
+// Usamos la libreria body-parser para poder usar json en el body de los POST
+app.use(bodyParser.json());
+
 // definir la ruta principal para nuestra web page
 app.get( "/", ( req, res ) => {
     res.send( "Hola Mundo NodeJS-Express !!" );
@@ -42,6 +46,27 @@ app.get("/mascota/list", (req, res) => {
     //     total: mascotas.length
     // });
     res.send(mascotas);
+});
+
+app.post("/mascota/nuevo", (req, res) => {
+    // console.log(req.body);
+    // console.log(req.headers);
+    // console.log(req.ip);
+
+    const mascotaJson = req.body;
+    const mascota = new Mascota(
+        mascotaJson["nombre"],
+        mascotaJson["raza"],
+        mascotaJson["edad"],
+        mascotaJson["especie"]
+    );
+
+    mascotas.push(mascota);
+
+    res.send({
+        "codigoError": 400,
+        "mensaje": "se ha producido un error"
+    });
 });
 
 // Inicializamos el server de Express

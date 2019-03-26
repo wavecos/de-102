@@ -22,7 +22,7 @@ export class MascotaListComponent implements OnInit {
         console.log(mascotas);
         this.mascotas = mascotas;
       });
-    // console.log('ngOnInit');
+    console.log('ngOnInit');
   }
 
   irNuevaMascota() {

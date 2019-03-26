@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Respuesta } from '../model/Respuesta';
 
 @Injectable({
     providedIn: 'root'
@@ -40,8 +41,17 @@ export class MascotaService {
             }));
     }
 
-    adicionarMascota(mascota: Mascota) {
+    adicionarMascota(mascota: Mascota): Observable<Respuesta> {
         // this.mascotas.push(mascota);
+        return this.http.post("http://localhost:8080/mascota/nuevo", mascota)
+            .pipe(map(jsonData => {
+                const respuesta = new Respuesta();
+                respuesta.codigoError = jsonData["codigoError"];
+                respuesta.mensaje = jsonData["mensaje"];
+
+                return respuesta;
+            }));
+
     }
 
 }

@@ -22,6 +22,9 @@ export class MascotaNewComponent implements OnInit {
     estado: "nuevo"
   }
 
+  mensajeError: string;
+  mostrarMensajeError: boolean = false;
+
   constructor(private mascotaService: MascotaService, private router: Router) { }
 
   ngOnInit() {
@@ -29,17 +32,27 @@ export class MascotaNewComponent implements OnInit {
 
   guardar() {
     console.log('nombre ' + this.mascota.nombre);
-    this.mascotaService.adicionarMascota(this.mascota);
-    this.mascota = {
-      nombre: "",
-      raza: "",
-      edad: 0,
-      especie: Especie.PERRO,
-      fechaIngreso: new Date(),
-      estado: "nuevo"
-    }
+    this.mascotaService.adicionarMascota(this.mascota)
+    .subscribe((respuesta) => {
+      if (respuesta.codigoError != null) {
+        this.mostrarMensajeError = true;
+        this.mensajeError = respuesta.mensaje;
+      } else {
+        this.router.navigate(['/mascotas']);
+      }
+    });
 
-    this.router.navigate(['/mascotas']);
+
+    // this.mascota = {
+    //   nombre: "",
+    //   raza: "",
+    //   edad: 0,
+    //   especie: Especie.PERRO,
+    //   fechaIngreso: new Date(),
+    //   estado: "nuevo"
+    // }
+
+    
   }
 
 }
