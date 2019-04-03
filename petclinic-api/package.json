@@ -4,6 +4,9 @@
   "description": "API para Petclinic",
   "main": "dist/index.js",
   "scripts": {
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/index.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"yello.bold, cyan.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
     "prebuild-disabled": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
@@ -20,11 +23,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "express": "^4.16.4"
   },
   "devDependencies": {
     "@types/express": "^4.16.1",
     "@types/node": "^11.11.4",
+    "nodemon": "^1.18.10",
     "tslint": "^5.14.0",
     "typescript": "^3.3.4000"
   }
