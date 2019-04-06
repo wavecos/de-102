@@ -11,9 +11,10 @@ import { Router } from '@angular/router';
 })
 export class MascotaNewComponent implements OnInit {
 
-  especies = Especie
+  especies = Especie;
 
   mascota: Mascota = {
+    id: null,
     nombre: "",
     raza: "",
     edad: 0,

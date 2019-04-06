@@ -11,12 +11,14 @@
         <img src="https://via.placeholder.com/100x50" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{ mascota.nombre }}</h5>
+          <p class="card-text">Id: {{ mascota.id }}</p>
           <p class="card-text">Edad: {{ mascota.edad }}</p>
           <p class="card-text">Raza: {{ mascota.raza }}</p>
           <p class="card-text">Especie: {{ mascota.especie }}</p>
           <p class="card-text">Estado: {{ mascota.estado }}</p>
           <p class="card-text">Fecha Ingreso: {{ mascota.fechaIngreso | date: 'dd-MM-yyyy HH:mm' }}</p>
-          <a href="#" class="btn btn-primary">Detalle</a>
+          <a class="btn btn-primary btn-sm" routerLink="/editar-mascota/{{ mascota.id }}" >Editar</a>
+          <a href="#" class="btn btn-danger btn-sm" (click)="eliminarMascota(mascota.id)">Eliminar</a>
         </div>
       </div>
 </div>

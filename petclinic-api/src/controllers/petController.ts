@@ -46,6 +46,16 @@ export let addPet = (req: Request, res: Response) => {
 };
 
 export let updatePet = (req: Request, res: Response) => {
-    res.send("Actualizar una mascota");
+    let petId = req.params.id;
+    let petData = req.body;
+
+    Pet.findByIdAndUpdate(petId, petData, (err: any, petOriginal: any) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(petOriginal);
+        }
+    });
+
 };
 

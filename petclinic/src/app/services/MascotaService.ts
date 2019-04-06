@@ -20,7 +20,7 @@ export class MascotaService {
     // ]
 
     getMascotas(): Observable<Mascota[]> {
-        return this.http.get("http://localhost:8080/mascota/list")
+        return this.http.get("http://localhost:8080/pet")
             .pipe(map(jsonData => {
                 var mascotas: Mascota[] = [];
 
@@ -28,6 +28,7 @@ export class MascotaService {
 
                 mascotasJson.forEach(mascotaJson => {
                     var mascota = new Mascota(
+                        mascotaJson['_id'],
                         mascotaJson['nombre'],
                         mascotaJson['raza'],
                         mascotaJson['edad'],
@@ -41,9 +42,23 @@ export class MascotaService {
             }));
     }
 
+    getMascota(id: string): Observable<Mascota> {
+        return this.http.get("http://localhost:8080/pet/" + id)
+        .pipe(map(mascotaJson => {
+            var mascota = new Mascota(
+                mascotaJson['_id'],
+                mascotaJson['nombre'],
+                mascotaJson['raza'],
+                mascotaJson['edad'],
+                mascotaJson['especie']
+            );
+            return mascota;
+        }));
+    }
+
     adicionarMascota(mascota: Mascota): Observable<Respuesta> {
         // this.mascotas.push(mascota);
-        return this.http.post("http://localhost:8080/mascota/nuevo", mascota)
+        return this.http.post("http://localhost:8080/pet", mascota)
             .pipe(map(jsonData => {
                 const respuesta = new Respuesta();
                 respuesta.codigoError = jsonData["codigoError"];
@@ -52,6 +67,17 @@ export class MascotaService {
                 return respuesta;
             }));
 
+    }
+
+    eliminarMascota(id: string): Observable<Respuesta> {
+        return this.http.delete("http://localhost:8080/pet/" + id)
+            .pipe(map(jsonData => {
+                const respuesta = new Respuesta();
+                respuesta.codigoError = jsonData["codigoError"];
+                respuesta.mensaje = jsonData["mensaje"];
+
+                return respuesta;
+            }));
     }
 
 }

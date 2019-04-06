@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Mascota } from '../../model/Mascota';
 import { MascotaService } from '../../services/MascotaService';
 import { Router } from '@angular/router';
+import { Respuesta } from 'src/app/model/Respuesta';
+import { flatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mascota-list',
@@ -17,16 +19,28 @@ export class MascotaListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cargasMascotas();
+    console.log('ngOnInit');
+  }
+
+  cargasMascotas() {
     this.mascotaService.getMascotas()
       .subscribe((mascotas) => {
         console.log(mascotas);
         this.mascotas = mascotas;
       });
-    console.log('ngOnInit');
   }
 
   irNuevaMascota() {
     this.router.navigate(['/nueva-mascota']);
+  }
+
+  eliminarMascota(id: string) {
+    this.mascotaService.eliminarMascota(id)
+      .subscribe((respuesta: Respuesta) => {
+        console.log("se ha eliminado la mascota");
+        this.cargasMascotas();
+      });
   }
 
   // ngOnChanges() {
