@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DueniosListComponent } from './duenios/duenios-list/duenios-list.component';
 import { CancionesListComponent } from './canciones/canciones-list/canciones-list.component';
 import { MascotaEditComponent } from './mascota/mascota-edit/mascota-edit.component';
+import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MascotaEditComponent } from './mascota/mascota-edit/mascota-edit.compon
     FooterComponent,
     DueniosListComponent,
     CancionesListComponent,
-    MascotaEditComponent
+    MascotaEditComponent,
+    MascotaFormComponent
   ],
   imports: [
     NgbModule,

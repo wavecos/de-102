@@ -28,7 +28,7 @@ export let deletePet = (req: Request, res: Response) => {
         if (err) {
             res.send({ error: "Hubo un error al eliminar la mascota" });
         } else {
-            res.send("Se elimino la mascota correctamente");
+            res.send( { error: "Se elimino la mascota correctamente" } );
         }
     });
 };

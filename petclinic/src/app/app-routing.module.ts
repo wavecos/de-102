@@ -5,11 +5,15 @@ import { MascotaNewComponent } from './mascota/mascota-new/mascota-new.component
 import { DueniosListComponent } from './duenios/duenios-list/duenios-list.component';
 import { CancionesListComponent } from './canciones/canciones-list/canciones-list.component';
 import { MascotaEditComponent } from './mascota/mascota-edit/mascota-edit.component';
+import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
 
 const routes: Routes = [
   { path: "mascotas", component: MascotaListComponent },
   { path: "nueva-mascota", component: MascotaNewComponent },
   { path: "editar-mascota/:mascotaId", component: MascotaEditComponent },
+
+  { path: "form-mascota/:isEdit/:mascotaId", component: MascotaFormComponent },
+
   { path: "duenios", component: DueniosListComponent},
   { path: "canciones", component: CancionesListComponent },
   { path: "", redirectTo: "/mascotas", pathMatch: "full" }

@@ -2,7 +2,7 @@
 <h2>Mascotas</h2>
 
 <button type="button" class="btn btn-primary" (click)="irNuevaMascota()">Adicionar 1</button>
-<a routerLink="/nueva-mascota" class="btn btn-primary" role="button" aria-pressed="true">Adicionar 2</a>
+<a routerLink="/form-mascota/false/gsgs" class="btn btn-primary" role="button" aria-pressed="true">Adicionar 2</a>
 
 <hr>
 
@@ -17,8 +17,8 @@
           <p class="card-text">Especie: {{ mascota.especie }}</p>
           <p class="card-text">Estado: {{ mascota.estado }}</p>
           <p class="card-text">Fecha Ingreso: {{ mascota.fechaIngreso | date: 'dd-MM-yyyy HH:mm' }}</p>
-          <a class="btn btn-primary btn-sm" routerLink="/editar-mascota/{{ mascota.id }}" >Editar</a>
-          <a href="#" class="btn btn-danger btn-sm" (click)="eliminarMascota(mascota.id)">Eliminar</a>
+          <button class="btn btn-primary btn-sm" routerLink="/form-mascota/true/{{ mascota.id }}" >Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarMascota(mascota.id)">Eliminar</button>
         </div>
       </div>
 </div>

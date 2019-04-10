@@ -19,11 +19,11 @@ export class MascotaListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cargasMascotas();
+    this.cargarMascotas();
     console.log('ngOnInit');
   }
 
-  cargasMascotas() {
+  cargarMascotas() {
     this.mascotaService.getMascotas()
       .subscribe((mascotas) => {
         console.log(mascotas);
@@ -39,7 +39,7 @@ export class MascotaListComponent implements OnInit {
     this.mascotaService.eliminarMascota(id)
       .subscribe((respuesta: Respuesta) => {
         console.log("se ha eliminado la mascota");
-        this.cargasMascotas();
+        this.cargarMascotas();
       });
   }
 

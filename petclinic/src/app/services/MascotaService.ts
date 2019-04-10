@@ -80,4 +80,15 @@ export class MascotaService {
             }));
     }
 
+    actualizarMascota(id: string, mascota: Mascota): Observable<Respuesta> {
+        return this.http.put("http://localhost:8080/pet/" + id, mascota)
+            .pipe(map(jsonData => {
+                const respuesta = new Respuesta();
+                respuesta.codigoError = jsonData["codigoError"];
+                respuesta.mensaje = jsonData["mensaje"];
+
+                return respuesta;
+            }));
+    }
+
 }
