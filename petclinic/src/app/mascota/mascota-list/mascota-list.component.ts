@@ -32,7 +32,7 @@ export class MascotaListComponent implements OnInit {
   }
 
   irNuevaMascota() {
-    this.router.navigate(['/nueva-mascota']);
+    this.router.navigate(['/form-mascota/false']);
   }
 
   eliminarMascota(id: string) {

@@ -17,6 +17,7 @@ import { DueniosListComponent } from './duenios/duenios-list/duenios-list.compon
 import { CancionesListComponent } from './canciones/canciones-list/canciones-list.component';
 import { MascotaEditComponent } from './mascota/mascota-edit/mascota-edit.component';
 import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
+import { EdadValidatorDirective } from './edad-validator.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.compon
     DueniosListComponent,
     CancionesListComponent,
     MascotaEditComponent,
-    MascotaFormComponent
+    MascotaFormComponent,
+    EdadValidatorDirective
   ],
   imports: [
     NgbModule,

@@ -38,6 +38,7 @@ export let addPet = (req: Request, res: Response) => {
 
     pet.save((err: any, petSaved: any) => {
         if (err) {
+            console.log(err);
             res.send({ error: "Hubo un error al insertar la mascota" });
         } else {
             res.send(petSaved);

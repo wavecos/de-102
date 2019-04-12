@@ -1,19 +1,46 @@
-<h1>Nueva Mascota</h1>
+<h1 *ngIf="isEdit">Editar Mascota</h1>
+<h1 *ngIf="!isEdit">Nueva Mascota</h1>
+
 <div class="alert alert-danger" role="alert" [hidden]="!mostrarMensajeError" >
   {{ mensajeError }}
 </div>
-<form>
+<form #form="ngForm" novalidate>
   <div class="form-group">
     <label for="inputNombre">Nombre</label>
-    <input type="text" [(ngModel)]="mascota.nombre" [ngModelOptions]="{standalone: true}" class="form-control" id="inputNombre" placeholder="Introduzca nombre de la mascota">
+    <input #nombre="ngModel" type="text" [(ngModel)]="mascota.nombre" [ngModelOptions]="{standalone: true}" class="form-control" id="inputNombre" placeholder="Introduzca nombre de la mascota" required>
+    <div *ngIf="nombre.errors && (nombre.dirty || nombre.touched)">
+      <div style="color: red" *ngIf="nombre.errors.required" >
+        * Coloque un nombre a la mascota.
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="inputRaza">Raza</label>
-    <input type="text" [(ngModel)]="mascota.raza" [ngModelOptions]="{standalone: true}" class="form-control" id="inputRaza" placeholder="Introduzca raza de la mascota">
+    <input #raza="ngModel" type="text" [(ngModel)]="mascota.raza" [ngModelOptions]="{standalone: true}" class="form-control" id="inputRaza" placeholder="Introduzca raza de la mascota" required minlength="5">
+    <div *ngIf="raza.errors && (raza.dirty || raza.touched)">
+      <div style="color: red" *ngIf="raza.errors.required" >
+        * La raza es requerida.
+      </div>
+
+      <div style="color: red" *ngIf="raza.errors.minlength" >
+        * Se requiere al menos 5 caractares.
+      </div>
+    </div>
+
   </div>
   <div class="form-group">
     <label for="inputEdad">Edad</label>
-    <input type="number" [(ngModel)]="mascota.edad" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEdad" placeholder="Edad de la mascota">
+    <input #edad="ngModel" type="number" [(ngModel)]="mascota.edad" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEdad" placeholder="Edad de la mascota" required edadValidator >
+    <div *ngIf="edad.errors && (edad.dirty || edad.touched)">
+      <div style="color: red" *ngIf="edad.errors.required" >
+        * La edad es requerida.
+      </div>
+
+      <div style="color: red" *ngIf="edad.errors.edadValidator" >
+        * La edad de la mascota debe estar entre 1 y 50 años.
+      </div>
+    </div>
+    
   </div>
   <!-- <div class="form-group">
     <label for="inputEspecie">Especie</label>
@@ -22,10 +49,10 @@
 
   <div class="form-group">
     <label for="inputEspecie">Especie</label>
-    <select class="form-control" id="inputEspecie" [(ngModel)]="mascota.especie" [ngModelOptions]="{standalone: true}">
+    <select #especie="ngModel" class="form-control" id="inputEspecie" [(ngModel)]="mascota.especie" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let item of especies | enumKeyValuelist;" [value]="item.key">{{ item.value }}</option>
     </select>
   </div>
 
-  <button (click)="guardar()" class="btn btn-primary">Guardar</button>
+  <button [disabled]="form.invalid" type="button" (click)="guardar()" class="btn btn-primary">{{ buttonTitle }}</button>
 </form>

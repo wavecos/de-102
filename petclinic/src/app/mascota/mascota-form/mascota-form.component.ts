@@ -16,18 +16,11 @@ export class MascotaFormComponent implements OnInit {
 
   especies = Especie;
 
-  mascota: Mascota = {
-    id: null,
-    nombre: "",
-    raza: "",
-    edad: 0,
-    especie: Especie.PERRO,
-    fechaIngreso: new Date(),
-    estado: "nuevo"
-  }
+  mascota: Mascota;
 
   isEdit: boolean;
   mascotaId: string;
+  buttonTitle: string;
 
   constructor(private mascotaService: MascotaService, private router: Router, private route: ActivatedRoute) { }
 
@@ -38,9 +31,19 @@ export class MascotaFormComponent implements OnInit {
 
           if ( this.isEdit ) {
             this.mascotaId = params.get("mascotaId");
+            this.buttonTitle = "Actualizar";
             return this.mascotaService.getMascota(this.mascotaId);
           } else {
-            return of(this.mascota);
+            this.buttonTitle = "Crear";
+            return of({
+              id: null,
+              nombre: null,
+              raza: null,
+              edad: 0,
+              especie: Especie.PERRO,
+              fechaIngreso: new Date(),
+              estado: "nuevo"
+            });
           }
       }))
       .subscribe((mascota: Mascota) => {
@@ -49,12 +52,17 @@ export class MascotaFormComponent implements OnInit {
       });
   }
 
-  actualizar() {
-    this.mascotaService.actualizarMascota(this.mascotaId, this.mascota)
+  guardar() {
+    if (this.isEdit) {
+      this.mascotaService.actualizarMascota(this.mascotaId, this.mascota)
       .subscribe((respuesta: Respuesta) => {
         this.router.navigate(['/mascotas']);
       });
+    } else {
+      this.mascotaService.adicionarMascota(this.mascota)
+      .subscribe((respuesta: Respuesta) => {
+        this.router.navigate(['/mascotas']);
+      });
+    }
   }
-
-
 }

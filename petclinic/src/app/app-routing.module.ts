@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: "nueva-mascota", component: MascotaNewComponent },
   { path: "editar-mascota/:mascotaId", component: MascotaEditComponent },
 
+  { path: "form-mascota/:isEdit", component: MascotaFormComponent },
   { path: "form-mascota/:isEdit/:mascotaId", component: MascotaFormComponent },
 
   { path: "duenios", component: DueniosListComponent},
