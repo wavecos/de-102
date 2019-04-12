@@ -7,7 +7,7 @@
 <form #form="ngForm" novalidate>
   <div class="form-group">
     <label for="inputNombre">Nombre</label>
-    <input #nombre="ngModel" type="text" [(ngModel)]="mascota.nombre" [ngModelOptions]="{standalone: true}" class="form-control" id="inputNombre" placeholder="Introduzca nombre de la mascota" required>
+    <input name="nombre" #nombre="ngModel" type="text" [(ngModel)]="mascota.nombre"  class="form-control" id="inputNombre" placeholder="Introduzca nombre de la mascota" required>
     <div *ngIf="nombre.errors && (nombre.dirty || nombre.touched)">
       <div style="color: red" *ngIf="nombre.errors.required" >
         * Coloque un nombre a la mascota.
@@ -16,7 +16,7 @@
   </div>
   <div class="form-group">
     <label for="inputRaza">Raza</label>
-    <input #raza="ngModel" type="text" [(ngModel)]="mascota.raza" [ngModelOptions]="{standalone: true}" class="form-control" id="inputRaza" placeholder="Introduzca raza de la mascota" required minlength="5">
+    <input name="raza" #raza="ngModel" type="text" [(ngModel)]="mascota.raza"  class="form-control" id="inputRaza" placeholder="Introduzca raza de la mascota" required minlength="5">
     <div *ngIf="raza.errors && (raza.dirty || raza.touched)">
       <div style="color: red" *ngIf="raza.errors.required" >
         * La raza es requerida.
@@ -30,7 +30,7 @@
   </div>
   <div class="form-group">
     <label for="inputEdad">Edad</label>
-    <input #edad="ngModel" type="number" [(ngModel)]="mascota.edad" [ngModelOptions]="{standalone: true}" class="form-control" id="inputEdad" placeholder="Edad de la mascota" required edadValidator >
+    <input name="edad" #edad="ngModel" type="number" [(ngModel)]="mascota.edad"  class="form-control" id="inputEdad" placeholder="Edad de la mascota" required edadValidator >
     <div *ngIf="edad.errors && (edad.dirty || edad.touched)">
       <div style="color: red" *ngIf="edad.errors.required" >
         * La edad es requerida.
@@ -49,10 +49,11 @@
 
   <div class="form-group">
     <label for="inputEspecie">Especie</label>
-    <select #especie="ngModel" class="form-control" id="inputEspecie" [(ngModel)]="mascota.especie" [ngModelOptions]="{standalone: true}">
+    <select name="especie" #especie="ngModel" class="form-control" id="inputEspecie" [(ngModel)]="mascota.especie" >
       <option *ngFor="let item of especies | enumKeyValuelist;" [value]="item.key">{{ item.value }}</option>
     </select>
   </div>
 
   <button [disabled]="form.invalid" type="button" (click)="guardar()" class="btn btn-primary">{{ buttonTitle }}</button>
+  <button class="btn btn-danger" routerLink="/mascotas" >Cancelar</button>
 </form>
